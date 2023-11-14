@@ -1,6 +1,7 @@
 # Biruni practise
-**GWS Biruni Web training practise**
-[*Lecture slides*](https://docs.google.com/presentation/d/1JonZ0fger0syAd7FftvJevrAO8LUyDyGFbudgi0xGTo/edit?usp=sharing)
+**GWS Biruni Web training notes**
+
+<!-- [*Lecture slides*](https://docs.google.com/presentation/d/1JonZ0fger0syAd7FftvJevrAO8LUyDyGFbudgi0xGTo/edit?usp=sharing) -->
 
 # Lesson 1
 ### angular module
@@ -106,14 +107,33 @@ app.directive("customDirective", function() {
 
 # Lesson 2
 
-app-onload.js
-app-module.js
-app-config.js (in short) ??
-app-hotkey.js - b-hotkey.js
+### app-onload.js
+- Setting http request header lang_code
+- Removing menu for mobile app
+- Setting session URI into global variable
+- Scrolling animation before leaving application
 
-what is web-socket
-app-socket.js
+### app-module.js
+- Initializing `app` module
+- Dependency injection of other modules
 
-app-chatbot.js (in short)
 
-$scope is same for nested controllers
+### Hotkeys
+- **`factories/b-hotkey.js`**
+  Returns hotkey class instance.
+  Can have multiple mod-keys with one letter-key in a combination.
+  It stores callback for running on hotkey pressed.
+- **`directives/b-hotkey.js`**
+  Using `b-hotkey="save"` attribute to bind hotkey into tag click event.
+  Also, `b-hotkey="alt+q"` you can define your own hotkey combination.
+- **`app-hotkeys.js`**
+  `key_set_getters` stores all hotkeys, and sets eventlistener for keydown/keyup event.
+
+
+### websocket
+- Communication protocol for real-time, bidirectional data exchange.
+- Enables persistent connections between clients and servers.
+- Ideal for low-latency applications like chat and live updates.
+- Operates on a lightweight architecture for efficiency in real-time web applications.
+
+<!-- ### app-socket.js -->

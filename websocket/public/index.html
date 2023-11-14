@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Messenger</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 20px;
+    }
+
+    #chat {
+      margin-bottom: 10px;
+    }
+
+    input {
+      padding: 5px;
+      margin-right: 5px;
+    }
+
+    button {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat"></div>
+  <input type="text" id="messageInput" placeholder="Type a message">
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    const ws = new WebSocket('ws://localhost:3000');
+
+    ws.addEventListener('message', handleIncomingMessage);
+
+    function handleIncomingMessage(event) {
+      const chatDiv = document.getElementById('chat');
+      const message = event.data;
+
+      chatDiv.innerHTML += `<p>${message}</p>`;
+    }
+
+    function sendMessage() {
+      const messageInput = document.getElementById('messageInput');
+      const message = messageInput.value;
+
+      if (message.trim() !== '') {
+        ws.send(message);
+        messageInput.value = '';
+      }
+    }
+  </script>
+</body>
+</html>
