@@ -1,6 +1,7 @@
 # Biruni practise
 **GWS Biruni Web training notes**
 
+[*Lecture content*](https://docs.google.com/document/d/1En1d_RXbODt2RKQlCpf2Fdy73Q-VipSbvaB-R7s8ijA/edit?usp=sharing)
 <!-- [*Lecture slides*](https://docs.google.com/presentation/d/1JonZ0fger0syAd7FftvJevrAO8LUyDyGFbudgi0xGTo/edit?usp=sharing) -->
 
 # Lesson 1
@@ -136,4 +137,50 @@ app.directive("customDirective", function() {
 - Ideal for low-latency applications like chat and live updates.
 - Operates on a lightweight architecture for efficiency in real-time web applications.
 
-<!-- ### app-socket.js -->
+# Lesson 3
+
+### app-socket.js
+
+##### This factory handles WebSocket communication and manages real-time updates for a web application.
+
+Let's break it down:
+
+- **Dependencies:** *\$http, \$rootScope, bRoutes, bConfig, bConstants.*
+These are used for making HTTP requests, managing the application's root scope, and accessing configuration constants.
+
+- **Initialization:** The factory defines two objects, `si` and `ws`.
+  - `si` - is an abbreviation for "**system information**". It is used as an object to store various pieces of data such as: *filials, projects, notifications, messages*.
+  - `ws` - is the WebSocket instance.
+
+- **Helper Functions:**
+  - `avatarUrl(sha)` - Generates an avatar URL based on a SHA hash.
+  - `formatTime(time)` - Formats a given timestamp into a readable time format.
+  - `loadNotifications()` - Makes an HTTP POST request to a route `bRoutes.NOTIFICATIONS` to fetch notifications, and then updates si.notifications.
+  - `loadAlerts()` - Makes an HTTP POST request to fetch alerts and uses the $.notify library to display them as notifications.
+  - **`open(__si)`** - Opens a WebSocket connection (`wss://smartup.online/broadcast`). It also calls the functions to load notifications, alerts, and messages. It listens for WebSocket events (open, message, close) and performs actions based on the received data.
+  - **`close()`** - Closes the WebSocket connection if it exists.
+
+- **Return Object:**
+The factory returns an object with `open` and `close` methods, allowing other parts of the AngularJS application to open and close the WebSocket connection.
+
+### app-chatbot.js
+
+**AppChatbot** - is responsible for integrating and running different chatbots in a web application:
+
+- **`runDashlyChatbot()`**
+- **`runFreshworks()`**
+
+These functions is responsible for setting up and running the particular chatbots. They include dynamically loading and initializing the chatbot with the provided user and company information.
+
+- **`run()`** - This is the main function exposed by the factory. It takes a data parameter, which is expected to contain information about different chatbots and the user. It iterates through the list of chatbots (`data.chatbots`) and runs the appropriate chatbot based on its type.
+
+### **app-setting.js**
+
+#### **`AppSetting`**
+- **`settings`** Object: Contains default settings such as `start_kind`, `init_project`, `init_filial`, and `init_form`.
+- **`save(key)`** - Saves a specific setting to either local storage or the server based on whether the application is in debug mode.
+- **`prepareMenuForms()`** - Populates the `settings.forms` array, representing menu forms. It creates a hierarchical structure of forms within menus based on the provided filials, menus, and forms.
+- **`prepareInitSettings(si)`** - Prepares the initial settings related to projects, filials, and forms. It populates the `settings.projects` and `settings.filials` arrays based on the provided system information (`si`).
+- **`saveInitSettings()`** - Called to save the initial settings related to projects, filials, and forms.
+- **`set(new_settings)`** - Part of the returned object, it allows setting multiple properties of the `settings` object at once.
+- **Returned Object:** The factory returns an object with properties and methods: `settings` (the settings object), `save` (the save function), `prepareInitSettings` (to initialize settings based on system information), and `set` (to set multiple properties of the settings object at once).
