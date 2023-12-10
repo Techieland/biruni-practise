@@ -1,0 +1,80 @@
+{
+  "user": {
+    "user_id": "101",
+    "name": "Admin",
+    "password_change_required": "",
+    "photo_sha": "",
+    "login": "admin@head",
+    "prefix": "A"
+  },
+  "is_admin": "Y",
+  "lang_code": "ru",
+  "company_name": "Head #0",
+  "company_code": "head",
+  "country_code": "",
+  "biruni_langs": {
+    "sh_add_task_current_form": "Добавить задачу к текущей форме",
+    "sh_custom_translate": "Пользовательский перевод"
+  },
+  "projects": [
+    {
+      "102": [
+        [
+          "22"
+        ],
+        [
+          "/core/mqz/dv_quiz_set_list"
+        ],
+        [
+          "Опросники двойных визитов"
+        ],
+        [
+          "/core/mqz/dv_quiz+add",
+          ""
+        ],
+        [
+          "Вопрос двойного визита (создание)",
+          ""
+        ]
+      ],
+      "hash": "01",
+      "code": "anor",
+      "name": "Anor",
+      "intro_form": "/anor/intro/dashboard",
+      "subscription_end_form": "",
+      "subscription_infos": {
+        "has_warning": "N"
+      },
+      "filials": [
+        [
+          "102",
+          "Администрирование"
+        ]
+      ],
+      "menus": [
+        [
+          "1",
+          "",
+          "Справочники",
+          "1"
+        ]
+      ]
+    }
+  ],
+  "settings": {
+    "start_kind": "",
+    "init_project": "",
+    "init_filial": "",
+    "init_form": ""
+  },
+  "warning_message": "",
+  "chatbot_info": [
+    {
+      "chatbot_type": "freshchat",
+      "script_src": "//fw-cdn.com/11100416/3829152.js",
+      "external_id": "1C1C8EF0B9BE784736C1E65A1EE11F17F9185B452AADACBC4840679570E7DFBDA4DB943CCB7E7D9EA52B34052C9D8370813D2A7BD367E3D571365F583C931EFE",
+      "restore_id": "6c7f28f1-a9bc-48d3-bff6-b3232d250641",
+      "name": "Admin"
+    }
+  ]
+}
