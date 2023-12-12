@@ -1,0 +1,56 @@
+variables initialization
+BroadcastChannel setup
+
+bConfig.sessionOutFn(sessionOut);
+    sessionOut()
+        logout()
+        notifySession()
+bConfig.subscriptionEndFn(subscriptionEnd);
+    subscriptionEnd()
+bConfig.sessionConflictsFn(sessionConflicts);
+    sessionConflicts()
+bConfig.onLocationChange(tryLocationChange);
+    tryLocationChange()
+        forceLocationChange()
+        sessionOut()
+onInit()
+    onSessionDone()
+        avatarUrl()
+        evalMenus()
+        setSubscriptionInfo()
+        setProjectConfig()
+    onSessionFail()
+        saveSessionUrl()
+    logout()
+
+returns
+  si
+  sessionDone (promise)
+    avatarUrl()
+    evalMenus()
+    setSubscriptionInfo()
+    evalForms()
+    setProjectConfig()
+    getInitProject()
+    getInitFilial()
+    openSession()
+    tryLocationChange()
+        forceLocationChange()
+            redirectPasswordChange()
+            setFilialOnce() => setFilial()
+                notifySetFilialObservers()
+            redirectToInit()
+                getSessionUrl()
+                introPage()
+            normalizeLocation()
+            logout()
+  introPage()
+  registerSetFilialObserver()
+  setFilial()
+    notifySetFilialObservers()
+  openSession()
+  logout()
+  logoutAndForget()
+  lockScreen()
+    sessionOut() => logout()
+  sessionStay()
